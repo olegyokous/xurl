@@ -16,7 +16,12 @@ Last updated: 2026-04-19 23:48:20 CEST
 
 ### Enhanced
 
-- [2026-04-19 23:08:51 CEST] OAuth2 tokens can now be retained without a discovered username label when X’s `/2/users/me` lookup is unavailable. Status output makes that state visible as `(unknown user)` instead of silently dropping the token.
+- [2026-04-19 23:08:51 CEST] OAuth2 tokens can now be retained without a discovered username label when X's `/2/users/me` lookup is unavailable. Status output makes that state visible as `(unknown user)` instead of silently dropping the token.
 - [2026-04-19 23:08:51 CEST] Repo documentation now describes the effective redirect URI as the source of callback host, port, and path, calls out explicit username authentication as the safer fallback when username discovery is unreliable, and documents the new stored `redirect_uri` behavior.
 - [2026-04-19 23:08:51 CEST] Apps can now store a per-app `redirect_uri` in `~/.xurl`, `REDIRECT_URI` from the environment still takes precedence, and `xurl auth apps redirect-uri get/set` plus `auth apps update --redirect-uri` make that configuration visible and editable from the CLI.
 - [2026-04-19 23:48:20 CEST] Documentation now records the confirmed X platform enrollment requirement behind `client-forbidden` / `client-not-enrolled` read failures: moving the app to the `Pay-per-use` package and the `Production` environment fixed live `/2/*` reads after OAuth had already succeeded.
+
+<!-- Personal note (fork): I hit the client-not-enrolled error myself and the
+     Pay-per-use fix above resolved it. Also worth knowing: the default OAuth2
+     callback port 8080 conflicts with several local dev servers I run, so I
+     set REDIRECT_URI=http://localhost:9727/callback in my shell profile. -->
