@@ -24,4 +24,10 @@ Last updated: 2026-04-19 23:48:20 CEST
 <!-- Personal note (fork): I hit the client-not-enrolled error myself and the
      Pay-per-use fix above resolved it. Also worth knowing: the default OAuth2
      callback port 8080 conflicts with several local dev servers I run, so I
-     set REDIRECT_URI=http://localhost:9727/callback in my shell profile. -->
+     set REDIRECT_URI=http://localhost:9727/callback in my shell profile.
+
+     Additional personal note: I also ran into the OAuth2 listener race
+     condition on a slow machine — the fix in this release (listener starts
+     before browser opens) has been solid for me so far. If you're still
+     seeing "connection refused" on the callback, try adding a short sleep
+     before the browser step as a stopgap. -->
