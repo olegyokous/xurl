@@ -30,4 +30,9 @@ Last updated: 2026-04-19 23:48:20 CEST
      condition on a slow machine — the fix in this release (listener starts
      before browser opens) has been solid for me so far. If you're still
      seeing "connection refused" on the callback, try adding a short sleep
-     before the browser step as a stopgap. -->
+     before the browser step as a stopgap.
+
+     Additional personal note (2026-04-22): Noticed that on macOS, the system
+     browser sometimes takes 2-3 seconds to fully launch, which can still
+     trigger the race even with the fix. Setting XURL_BROWSER_DELAY=3 in my
+     shell profile has been a reliable workaround on my M2 MacBook. -->
