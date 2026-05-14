@@ -32,8 +32,10 @@ Last updated: 2026-04-19 23:48:20 CEST
      seeing "connection refused" on the callback, try adding a short sleep
      before the browser step as a stopgap.
 
-     Additional personal note (2026-04-20): Noticed that on macOS, the system
-     browser sometimes takes 2-3 seconds to fully launch, which can still
-     trigger the race even with the fix. Setting REDIRECT_URI to a port I
-     control (9727) and keeping the terminal open until the browser loads has
-     been the most reliable workaround for me personally. -->
+     Additional personal note (2026-04-20): Noticed that on macOS the default
+     browser sometimes takes 2-3 seconds to fully launch, which is long enough
+     to still occasionally lose the race even with the fix. As a workaround I
+     also set XURL_BROWSER_DELAY=3 in my shell profile — not sure if that env
+     var is officially supported yet but it seems to work with my local build.
+     Will open an issue upstream to ask about making the browser-open delay
+     configurable via the stored app config rather than an env var. -->
