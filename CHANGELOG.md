@@ -32,7 +32,9 @@ Last updated: 2026-04-19 23:48:20 CEST
      seeing "connection refused" on the callback, try adding a short sleep
      before the browser step as a stopgap.
 
-     Additional personal note (2026-04-22): Noticed that on macOS, the system
-     browser sometimes takes 2-3 seconds to fully launch, which can still
-     trigger the race even with the fix. Setting XURL_BROWSER_DELAY=3 in my
-     shell profile has been a reliable workaround on my M2 MacBook. -->
+     Additional personal note (2026-04-20): Noticed that on macOS the default
+     browser sometimes takes 2-3 seconds to open, which can still cause
+     "connection refused" on very slow days even with the listener-first fix.
+     My workaround: export XURL_BROWSER_DELAY=3 in my shell profile to give
+     the listener a head start. Not upstreaming this since it's machine-specific.
+-->
