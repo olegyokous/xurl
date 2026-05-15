@@ -32,10 +32,11 @@ Last updated: 2026-04-19 23:48:20 CEST
      seeing "connection refused" on the callback, try adding a short sleep
      before the browser step as a stopgap.
 
-     Additional personal note (2026-04-20): Noticed that on macOS the default
-     browser sometimes takes 2-3 seconds to launch, which can still trigger
-     the race even with the fix if the machine is under load. My workaround:
-     export XURL_BROWSER_DELAY=3 in my shell profile — haven't confirmed
-     whether that env var is actually wired up yet, but worth checking the
-     source. Might send a PR if I get time.
--->
+     Additional personal note (2026-04-20): Noticed that on macOS, if you have
+     Chrome set as the default browser, the OAuth flow sometimes opens a new
+     tab in an existing window that already has a logged-in X session under a
+     *different* account — leading to a confusing auth-as-wrong-user situation.
+     Workaround: open an incognito window manually and paste the auth URL there
+     instead of letting xurl launch the browser automatically. I may look into
+     adding a --no-browser flag that just prints the URL so you can paste it
+     yourself. -->
