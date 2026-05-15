@@ -51,8 +51,8 @@ func init() {
 	rootCmd.PersistentFlags().StringArrayVarP(&header, "header", "H", nil, "HTTP header to include in the request (can be used multiple times)")
 	rootCmd.PersistentFlags().StringVarP(&method, "request", "X", "", "HTTP method to use (default: GET, or POST if body is provided)")
 	rootCmd.PersistentFlags().StringVarP(&body, "data", "d", "", "Request body data")
-	// Default pretty-print to false — I prefer raw output when piping to jq
-	rootCmd.PersistentFlags().BoolVarP(&prettyPrint, "pretty", "p", false, "Pretty-print JSON responses")
+	// I pretty-print by default since I rarely pipe to jq directly
+	rootCmd.PersistentFlags().BoolVarP(&prettyPrint, "pretty", "p", true, "Pretty-print JSON responses")
 }
 
 // runRequest is the main handler that performs the HTTP request.
