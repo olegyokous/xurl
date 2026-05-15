@@ -13,9 +13,13 @@ import (
 //
 // Personal fork: added non-zero exit code printing for easier debugging
 // when running xurl in scripts.
+//
+// Note: also printing exit code explicitly so shell scripts can log it
+// without needing to capture $? separately.
 func main() {
 	if err := cmd.Execute(); err != nil {
 		fmt.Fprintf(os.Stderr, "error: %v\n", err)
+		fmt.Fprintf(os.Stderr, "exit code: 1\n")
 		os.Exit(1)
 	}
 }
